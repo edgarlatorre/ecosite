@@ -10,5 +10,8 @@ class Post(models.Model):
 	class Admin :
 		pass
 	
+	def get_absolute_url(self):
+		return 'post/%d' % self.id
+	
 	def __unicode__(self) :
 		return self.title

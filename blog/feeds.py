@@ -8,6 +8,3 @@ class LatestPosts(Feed) :
 	
 	def items(self) :
 		return Post.objects.all()
-		
-	def item_link(self, post) :
-		return '/post/%d/' % post.id
