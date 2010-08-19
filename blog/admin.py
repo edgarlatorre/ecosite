@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
 from django import forms
 from models import Post
-from ecosite.tags import aplicar_tags
+from ecosite.tags import apply_tags, tags_to_object
 
 
 class FormPost(forms.ModelForm) :

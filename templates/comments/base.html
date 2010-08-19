@@ -1,11 +1,19 @@
 {% include "shared/header.html" %}
+</hr>
+<div id="page">
+	<div id="page-bgtop">
+		<div id="content">
+			{% block titulo %}
+  				{% block title %}{% endblock %}
+			{% endblock %}
 
-{% block titulo %}
-  {% block title %}{% endblock %}
-{% endblock %}
-
-{% block conteudo %}
-  {% block content %}{% endblock %}
-{% endblock %}
+			{% block conteudo %}
+				{% block content %}{% endblock %}
+			{% endblock %}
+		</div>
+		{% include "shared/side_bar.html" %}
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+</div>
 
 {% include "shared/footer.html" %}
