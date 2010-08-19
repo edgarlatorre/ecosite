@@ -7,8 +7,8 @@ def post_index(request):
 	posts = Post.objects.order_by('-published')
 	return render_to_response('blog/index.html', {'posts':posts}, context_instance = RequestContext(request))
 	
-def post_show(request, post_id):
-	post = get_object_or_404(Post, id=post_id)
+def post_show(request, slug):
+	post = get_object_or_404(Post, slug=slug)
 	return render_to_response('blog/show.html', locals(), context_instance = RequestContext(request))
 
 
