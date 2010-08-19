@@ -18,6 +18,6 @@ urlpatterns = patterns('',
 	(r'^media/(.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	(r'^rss/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',{'feed_dict': {'ultimos': LatestPosts}}),
 	url(r'^$', 'ecosite.blog.views.post_index', name='post-index'),
-	url(r'^post/(?P<post_id>\d+)/$', 'ecosite.blog.views.post_show', name='post-show'),
+	url(r'^post/(?P<slug>[\w_-]+)/$', 'ecosite.blog.views.post_show', name='post-show'),
 	url(r'^comentarios/', include('django.contrib.comments.urls')),
 )
