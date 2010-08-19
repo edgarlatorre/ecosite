@@ -1,10 +1,11 @@
 from django.db import models
+from datetime import datetime
 
 class Post(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
-	author = models.ForeignKey('auth.User', blank = True, null = False)
-	published = models.DateTimeField()
+	author = models.ForeignKey('auth.User', null = False)
+	published = models.DateTimeField(default=datetime.now, blank=True)
 
 	class Admin :
 		pass
