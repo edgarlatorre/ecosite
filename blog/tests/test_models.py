@@ -17,6 +17,10 @@ class PostTest(TestCase) :
 	def test_published_is_not_obligatory(self):
 		post = Post(title='test', body='body')
 		self.assertFalse(self.post_is_valid(post))
+	
+	def test_get_absolute_url(self) :
+		post = Post(slug='teste-slug')
+		self.assertTrue(post.get_absolute_url() == '/post/teste-slug/')
 		
 	
 	def post_is_valid(self, post):
