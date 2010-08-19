@@ -14,6 +14,10 @@ class PostTest(TestCase) :
 		post = Post(title="test", body="body")
 		self.assertTrue(post.title == str(post))
 		
+	def test_published_is_not_obligatory(self):
+		post = Post(title='test', body='body')
+		self.assertFalse(self.post_is_valid(post))
+		
 	
 	def post_is_valid(self, post):
 		is_valid = True
