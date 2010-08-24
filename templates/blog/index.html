@@ -3,14 +3,12 @@
 	<div id="content">
 		{% for post in posts %}
 		<div class="post">
-			<h1 class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }} </a></h1>
+			<h2 class="title">{{ post.title }}</h2>
+			<p class="date">{{ post.published|date:"d.m.Y" }}</p>
 			<div class="entry">
-				<p>
-					{{ post.body|truncatewords:"30"|safe }}
-				</p>
+				{{ post.body|truncatewords:"30"|safe }}
+				<p class="links"><a href="#" class="comments">Comments (64)</a> &nbsp;&nbsp;&nbsp; <a href="{{ post.get_absolute_url }}" class="permalink">Full article</a></p>
 			</div>
-			<p class="meta">Posted by <a href="#">{{ post.author }}</a> on {{ post.published|date:"d\/m\/Y" }}
-				&nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (64)</a> &nbsp;&bull;&nbsp; <a href="{{ post.get_absolute_url }}" class="permalink">Full article</a></p>
 		</div>
 		{% empty %}
 			<div class="post">
@@ -23,5 +21,5 @@
 </div>
 {% include "shared/side_bar.html" %}
 <div style="clear: both;">&nbsp;</div>
-
+<div id="bottom-bg"></div>
 {% include "shared/footer.html" %}
