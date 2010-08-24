@@ -6,6 +6,9 @@ from ecosite.tags import apply_tags, tags_to_object
 
 
 class FormPost(forms.ModelForm) :
+	class Media:
+		js = ('/js/tiny_mce/tiny_mce.js', '/js/textareas.js')
+    
 	class Meta:
 		model = Post
 		
