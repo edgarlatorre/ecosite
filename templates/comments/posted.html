@@ -1,4 +1,23 @@
 {% include "shared/header.html" %}
-{% block titulo %}Comentário enviado! - {{ block.super }}{% endblock %}
-<p><a href="/">Agora clique aqui para voltar para o blog!</a></p>
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="content">
+				<div class="post">
+					<div class="post-bgtop">
+						<div class="post-bgbtm">
+							<br>
+							<br>
+							{% block titulo %}Comentário enviado! - {{ block.super }}{% endblock %}
+							<p><a href="/">Agora clique aqui para voltar para o blog!</a></p>
+							<br>
+							</br>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% include 'shared/side_bar.html' %}
+		</div>
+	</div>
+</div>
 {% include "shared/footer.html" %}

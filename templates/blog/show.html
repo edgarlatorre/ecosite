@@ -1,36 +1,42 @@
 {% include "shared/header.html" %}
 </hr>
-<div id="page">
+<div id="show-post">
 	<div id="page-bgtop">
 		<div id="content">
 			{% load comments %}
-			<center>
-				{% if post %}
-					<h1> {{ post.title }} </h1>
-					{{ post.body|safe }}
-					<center><hr></center>
-					<div class="comments">
-						{% get_comment_list for post as comments %}
-						{% if comments %}
-							<center>
-								<h3>Comentários</h3>
-							</center>
-						{% endif %}
-						{% for comment in comments %}
-							<div class="comment">
+			<div class="post">
+				<div class="post-bgtop">
+					<div class="post-bgbtm">
+						<center>
+							{% if post %}
+								<h2 class="title"> {{ post.title }} </h2>
+								{{ post.body|safe }}
+							{% else %}
+        						<h1>Nao existe</h1>
+							{% endif %}
+						</center>
+					</div>
+				</div>
+				<div class="post">
+					{% get_comment_list for post as comments %}
+					{% if comments %}
+						<center>
+							<h2>Comentários</h2>
+						</center>
+					{% endif %}
+					<ul>
+					{% for comment in comments %}
+						<div id="comments">
 								Nome: {{ comment.name }}
 								{% if comment.url %}URL: {{ comment.url }}{% endif %}<br/>
 								{{ comment.comment|linebreaks }}
-								<hr>
-							</div>
-						{% endfor %}
-						<h3>Deixe um comentário</h3>
-						{% render_comment_form for post %}
-					</div>
-				{% else %}
-        			<h1>Nao existe</h1>
-				{% endif %}
-			</center>
+						</div>
+					{% endfor %}
+					<ul>
+					<h3>Deixe um comentário</h3>
+					{% render_comment_form for post %}
+				</div>
+			</div>
 		</div>
 		{% include "shared/side_bar.html" %}
 		<div style="clear: both;">&nbsp;</div>

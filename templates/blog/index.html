@@ -1,25 +1,33 @@
 {% include "shared/header.html" %}
-<div id="page">
-	<div id="content">
-		{% for post in posts %}
-		<div class="post">
-			<h2 class="title">{{ post.title }}</h2>
-			<p class="date">{{ post.published|date:"d.m.Y" }}</p>
-			<div class="entry">
-				{{ post.body|truncatewords:"30"|safe }}
-				<p class="links"><a href="#" class="comments">Comments (64)</a> &nbsp;&nbsp;&nbsp; <a href="{{ post.get_absolute_url }}" class="permalink">Full article</a></p>
-			</div>
-		</div>
-		{% empty %}
-			<div class="post">
-				<div class="entry">
-					Não existe nenhum post.
+<script>
+	current('home');
+</script>
+<div id="page" onload="current('home');">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="content">
+				{% for post in posts %}
+				<div class="post">
+					<div class="post-bgtop">
+						<div class="post-bgbtm">
+							<h2 class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }} </a></h2>
+							<p class="meta"><span class="date">{{ post.published|date:"d/m/Y" }}</span> {{ post.published|date:"h:m:s" }} Posted by <a href="#">{{ post.author }}</a></p>
+							<div class="entry">
+								{{ post.body|truncatewords:"30"|safe }}
+							</div>
+						</div>
+					</div>
 				</div>
+				{% empty %}
+					<div class="post">
+						<div class="entry">
+							Não existe nenhum post.
+						</div>
+					</div>
+				{% endfor %}
 			</div>
-		{% endfor %}
+			{% include "shared/side_bar.html" %}
+		</div>
 	</div>
 </div>
-{% include "shared/side_bar.html" %}
-<div style="clear: both;">&nbsp;</div>
-<div id="bottom-bg"></div>
 {% include "shared/footer.html" %}
