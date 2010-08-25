@@ -20,4 +20,5 @@ urlpatterns = patterns('',
 	url(r'^$', 'ecosite.blog.views.post_index', name='post-index'),
 	url(r'^post/(?P<slug>[\w_-]+)/$', 'ecosite.blog.views.post_show', name='post-show'),
 	url(r'^comentarios/', include('django.contrib.comments.urls')),
+	url(r'^contato/', 'ecosite.contact.views.contact', name='contact'),
 )

@@ -1,0 +1,33 @@
+{% include "shared/header.html" %}
+<script>
+	current('contact');
+</script>
+<div id="page">
+	<div id="page-bgtop">
+		<div id="page-bgbtm">
+			<div id="content">
+				<div class="post">
+					<div class="post-bgtop">
+						<div class="post-bgbtm">
+							<br>
+							<center>
+								<h2> Contato </h2> 
+							</center>
+							<form method='POST'>
+							<table>
+								{{ form }}
+								<tr>
+									<th>&nbsp;</th>
+									<td><input type="submit" value="Enviar contato"/></td>
+								</tr>
+							</table>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% include 'shared/side_bar.html' %}
+		</div>
+	</div>
+</div>
+{% include "shared/footer.html" %}
