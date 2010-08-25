@@ -1,11 +1,24 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django import forms
+from django.core.mail import send_mail
 
 class FormContact(forms.Form):
 	name = forms.CharField(max_length=50)
 	email = forms.EmailField(required=False)
 	message = forms.Field(widget=forms.Textarea)
+	
+	def send(self):
+		title = 'Mensagem enviada pelo ecofriend'
+		to = 'osoturno@gmail.com'
+		message = """
+			Nome: %s(name)s
+			E-mail: %s(email)s
+			Mensagem:
+			%s(message)s
+		"""
+		
+		send_mail(subject=title, message=message, from_email=to, recipient_list=[to])
 		
 
 def contact(request):
