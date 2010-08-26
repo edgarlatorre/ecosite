@@ -25,7 +25,7 @@ class FormPost(forms.ModelForm) :
 	
 class AdminPost(ModelAdmin) :
 	class Media:
-		js = ('/js/tiny_mce/tiny_mce.js', '/js/textareas.js')
+		js = ('%s/js/tiny_mce/tiny_mce.js' % settings.MEDIA_URL, '%s/js/textareas.js' % settings.MEDIA_URL)
 		
 	form = FormPost	
 	def save_model(self, request, obj, form, change) :
