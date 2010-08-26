@@ -1,4 +1,6 @@
 *.pyc
 *.db
 settings.py
+fabfile.py
 .DS_Store
+build
