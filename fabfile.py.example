@@ -1,0 +1,64 @@
+from fabric.api import *
+
+env.project = 'ecosite'
+env.package = '$(project).zip'
+
+env.build_path = '%s/build' % env.project
+env.package    = '%s.zip' % env.project
+env.local_path = '../%s/%s' % (env.build_path, env.package)
+ 
+# Media
+env.media_src   = '%s/media' % env.project
+env.media_root  = 'public_html'
+env.media_path  = '%s/%s/%s' % (env.media_root, env.project, env.media_src)
+env.media_build = '%s/%s' % (env.build_path, env.media_path)
+ 
+# Application code
+env.app_root  = 'wsgi_apps'
+env.app_path  = '%s/%s' % (env.app_root, env.project)
+env.app_build = '%s/%s' % (env.build_path, env.app_path)
+
+#Remote Servers
+env.user = 'username' #username
+env.hosts = ['localhost'] #server
+env.destination = 'destination' #destination
+
+def deploy() :
+	"""Deploy application to servers"""
+	build()
+	put(env.local_path, env.destination)
+	run('cd %s; unzip -uo %s; rm %s' % (env.destination, env.package, env.package))
+	reload_app()
+	
+def build() :
+	"""Build the application"""
+	prepare()
+	#local('cp -R ../%s/* ../%s/%s' % (env.project, env.build_path, env.app_path))
+	copy_files_and_directories()
+	local('cp -R ../%s/* ../%s/%s' % (env.media_src, env.build_path, env.media_path))
+	# local('find ../%s -name *.pyc -delete' % env.build_path)
+	# 	local('find ../%s -path *upload* -delete' % env.build_path)
+	# 	local('find ../%s -path *fixtures* -delete' % env.build_path)
+	local('cd ../%s;zip -r %s %s %s' % (env.build_path, env.package, env.media_root, env.app_root))
+
+def prepare():
+	"""Prepare the build application"""
+	local('cd ..')
+	clean()
+	local('mkdir -p ../%s' % env.media_build)
+	local('mkdir -p ../%s' % env.app_build)
+
+def clean():
+	"""Remove the build directory"""
+	local('rm -fR ../%s' % env.build_path)
+
+def copy_files_and_directories():
+	"""Copy files to build directory"""
+	itens_to_copy = ['blog', 'tags', 'contact', 'templates', '__init__.py', 'manage.py', 'settings.py', 'urls.py']
+	
+	for item in itens_to_copy :
+		local('cp -R ../%s/%s ../%s/%s' % (env.project, item, env.build_path, env.app_path))
+
+def reload_app():
+	"""Reloads the app."""
+	run('touch %s/%s/%s/index.wsgi' % (env.destination, env.media_root, env.project))
