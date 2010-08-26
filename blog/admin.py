@@ -37,3 +37,5 @@ class CustomFlatPageAdmin(FlatPageAdmin):
 		js = ('%s/js/tiny_mce/tiny_mce.js' % settings.MEDIA_URL, '%s/js/textareas.js' % settings.MEDIA_URL)
 
 admin.site.register(Post, AdminPost)
+admin.site.unregister(FlatPage)
+admin.site.register(FlatPage, CustomFlatPageAdmin)
