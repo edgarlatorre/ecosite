@@ -1,0 +1,32 @@
+{% include 'shared/header.html' %}
+<script>
+	current('about_we');
+</script>
+</hr>
+<div id="show-post">
+	<div id="page-bgtop">
+		<div id="content">
+			<div class="post">
+				<div class="post-bgtop">
+					<div class="post-bgbtm">
+						<br>
+						<br>
+						<h2>Sobre Nós</h2>
+						<br>
+						<br>
+						{% block titulo %}{{ flatpage.title }} - {{ block.super }}{% endblock %}
+
+						{% block h1 %}{{ flatpage.title }}{% endblock %}
+
+						{% block conteudo %}
+						{{ flatpage.content }}
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% include "shared/side_bar.html" %}
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+</div>
+{% include 'shared/footer.html' %}
