@@ -12,11 +12,11 @@ class FormContact(forms.Form):
 		title = 'Mensagem enviada pelo ecofriend'
 		to = 'osoturno@gmail.com'
 		message = """
-			Nome: %s(name)s
-			E-mail: %s(email)s
-			Mensagem:
-			%s(message)s
-		"""
+		Nome: %(name)s
+		E-mail: %(email)s
+		Mensagem:
+		%(message)s
+		""" % self.cleaned_data
 		
 		send_mail(subject=title, message=message, from_email=to, recipient_list=[to])
 		
