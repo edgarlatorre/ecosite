@@ -4,7 +4,7 @@ from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django import forms
 from django.conf import settings
-from models import Post
+from models import Post, Category
 from ecosite.tags import apply_tags, tags_to_object
 
 
@@ -35,7 +35,8 @@ class AdminPost(ModelAdmin) :
 class CustomFlatPageAdmin(FlatPageAdmin):
 	class Media:
 		js = ('%s/js/tiny_mce/tiny_mce.js' % settings.MEDIA_URL, '%s/js/textareas.js' % settings.MEDIA_URL)
-
+		
 admin.site.register(Post, AdminPost)
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, CustomFlatPageAdmin)
+admin.site.register(Category)

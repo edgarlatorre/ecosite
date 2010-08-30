@@ -2,10 +2,12 @@
 	<ul>
 		<li>
 			<h2>Categorias </h2>
+			{% load categories %}
+			{% get_categories %}
 			<ul>
-				<li><a href="#">Categoria 1 (2)</a></li>
-				<li><a href="#">Categoria 2 (5)</a></li>
-				<li><a href="#">Categoria 3 (10)</a></li>
+				{% for category in get_all_categories %}
+					<li><a href="#">{{ category.description }}</a></li>
+				{% endfor %}
 			</ul>
 		</li>
 		<li>

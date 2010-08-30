@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ecosite.blog.models import Post
+from ecosite.blog.models import Post, Category
 
 class PostTest(TestCase) :
 	def test_should_have_a_title(self):
@@ -29,4 +29,10 @@ class PostTest(TestCase) :
 			post.save()
 		except :
 			is_valid = False
+
+class CategoryTest(TestCase):
+	def test_should_have_description_as_unicode(self):
+		category = Category(description='teste')
+		self.assertTrue(category.description == str(category))
+		
 		

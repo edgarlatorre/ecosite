@@ -4,10 +4,17 @@ from django.db.models import signals
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 
+class Category(models.Model):
+	description = models.CharField(max_length=60)
+	
+	def __unicode__(self):
+		return self.description
+
 class Post(models.Model):
 	title = models.CharField(max_length=100)
 	body = models.TextField()
 	author = models.ForeignKey('auth.User', null = False)
+	category = models.ForeignKey(Category, null = False)
 	published = models.DateTimeField(default=datetime.now, blank=True)
 	slug = models.SlugField(max_length=100, blank=True, unique=True)
 
