@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ecosite.blog.models import Post, Category
+from ecosite.blog.models import Post, Category, Link
 
 class PostTest(TestCase) :
 	def test_should_have_a_title(self):
@@ -34,5 +34,11 @@ class CategoryTest(TestCase):
 	def test_should_have_description_as_unicode(self):
 		category = Category(description='teste')
 		self.assertTrue(category.description == str(category))
+		
+class LinkTest(TestCase):
+	def test_should_have_title_as_unicode(self):
+		link = Link(url='www.edgarlatorre.net')
+		self.assertTrue(link.url == str(link))
+		
 		
 		

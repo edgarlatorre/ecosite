@@ -9,6 +9,13 @@ class Category(models.Model):
 	
 	def __unicode__(self):
 		return self.description
+		
+class Link(models.Model):
+	url = models.CharField(max_length=60)
+	description = models.TextField(blank=True)
+	
+	def __unicode__(self):
+		return self.url
 
 class Post(models.Model):
 	title = models.CharField(max_length=100)

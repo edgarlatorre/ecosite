@@ -4,7 +4,7 @@ from django.contrib.flatpages.models import FlatPage
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django import forms
 from django.conf import settings
-from models import Post, Category
+from models import Post, Category, Link
 from ecosite.tags import apply_tags, tags_to_object
 
 
@@ -40,3 +40,4 @@ admin.site.register(Post, AdminPost)
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, CustomFlatPageAdmin)
 admin.site.register(Category)
+admin.site.register(Link)

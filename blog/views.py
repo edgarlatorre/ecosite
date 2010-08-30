@@ -10,6 +10,10 @@ def post_index(request):
 def post_show(request, slug):
 	post = get_object_or_404(Post, slug=slug)
 	return render_to_response('blog/show.html', locals(), context_instance = RequestContext(request))
+	
+def show_posts_by_category(request, category_id):
+	posts = Post.objects.filter(category__id=category_id)
+	return render_to_response('blog/index.html', locals(), context_instance = RequestContext(request))
 
 
 

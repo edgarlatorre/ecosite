@@ -21,4 +21,5 @@ urlpatterns = patterns('',
 	url(r'^post/(?P<slug>[\w_-]+)/$', 'ecosite.blog.views.post_show', name='post-show'),
 	url(r'^comentarios/', include('django.contrib.comments.urls')),
 	url(r'^contato/', 'ecosite.contact.views.contact', name='contact'),
+	url(r'^categoria/(?P<category_id>\d+)/$', 'ecosite.blog.views.show_posts_by_category', name='posts-by-category'),
 )
