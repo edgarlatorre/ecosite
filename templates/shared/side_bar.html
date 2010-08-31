@@ -1,6 +1,10 @@
 <div id="sidebar">
 	<ul>
 		<li>
+			<h2>Aliquam tempus</h2>
+			<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, volutpat.</p>
+		</li>
+		<li>
 			<h2>Categorias </h2>
 			{% load categories %}
 			{% get_categories %}
@@ -10,15 +14,7 @@
 				{% endfor %}
 			</ul>
 		</li>
-		<li>
-			<h2>Tags </h2>
-			<ul>
-				<li><a href="#">Tag 1</a></li>
-				<li><a href="#">Tag 2</a></li>
-				<li><a href="#">Tag 3</a></li>
-				<li><a href="#">Tag 4</a></li>
-			</ul>
-		</li>
+
 		<li>
 			<h2>Links</h2>
 			{% load links %}
@@ -31,3 +27,5 @@
 		</li>
 	</ul>
 </div>
+<!-- end #sidebar -->
+<div style="clear: both;">&nbsp;</div>

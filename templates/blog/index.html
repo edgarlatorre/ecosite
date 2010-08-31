@@ -4,30 +4,24 @@
 </script>
 <div id="page" onload="current('home');">
 	<div id="page-bgtop">
-		<div id="page-bgbtm">
-			<div id="content">
-				{% for post in posts %}
-				<div class="post">
-					<div class="post-bgtop">
-						<div class="post-bgbtm">
-							<h2 class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }} </a></h2>
-							<p class="meta"><span class="date">{{ post.published|date:"d/m/Y" }}</span> {{ post.published|date:"h:m:s" }} Posted by <a href="#">{{ post.author }}</a></p>
-							<div class="entry">
-								{{ post.body|truncatewords:"30"|safe }}
-							</div>
-						</div>
-					</div>
+		<div id="content">
+			{% for post in posts %}
+			<div class="post">
+				<p class="meta"><span class="date">{{ post.published|date:"d/m/Y" }}</span> 7:27 AM Escrito por <a href="#">{{ post.author }}</a></p>
+				<h2 class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }}  </a></h2>
+				<div class="entry">
+					{{ post.body|truncatewords:"30"|safe }}
 				</div>
-				{% empty %}
-					<div class="post">
-						<div class="entry">
-							Não existe nenhum post.
-						</div>
-					</div>
-				{% endfor %}
 			</div>
-			{% include "shared/side_bar.html" %}
+			{% empty %}
+			<div class="post">
+				<div class="entry">
+					Não existe nenhum post.
+				</div>
+			</div>
+			{% endfor %}
 		</div>
+		<!-- end #content -->
+		{% include "shared/side_bar.html" %}
 	</div>
-</div>
 {% include "shared/footer.html" %}
