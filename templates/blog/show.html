@@ -1,7 +1,4 @@
 {% include "shared/header.html" %}
-<script>
-	current('home');
-</script>
 <div id="page" onload="current('home');">
 	<div id="page-bgtop">
 		<div id="content">
@@ -9,7 +6,7 @@
 			<div class="post">
 				{% if post %}
 					<p class="meta"><span class="date">{{ post.published|date:"d/m/Y" }}</span> {{ post.published|date:"H:m:s" }} Escrito por <a href="#">{{ post.author }}</a></p>
-					<h2 class="title"><a href="{{ post.get_absolute_url }}">{{ post.title }}  </a></h2>
+					<h2 class="singletitle">{{ post.title }} </h2>
 					<div class="entry">
 						{{ post.body|safe }}
 					</div>
@@ -19,14 +16,13 @@
 					</div>
 				{% endif %}
 			</div>
+			{% get_comment_list for post as comments %}
+			{% if comments %}
 			<div class="post">
 				<div >
-					{% get_comment_list for post as comments %}
-					{% if comments %}
-						<center>
-							<h2>Comentários</h2>
-						</center>
-					{% endif %}
+					<center>
+						<h2>Comentários</h2>
+					</center>
 					
 					{% for comment in comments %}
 						<div class="comments">
@@ -37,6 +33,7 @@
 					{% endfor %}
 				</div>
 			</div>
+			{% endif %}
 			<div class="post">
 				<h3>Deixe um comentário</h3>
 				{% render_comment_form for post %}

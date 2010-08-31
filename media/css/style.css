@@ -253,6 +253,15 @@ hr { display: none; }
 	padding-left: 40px;
 }
 
+.post .singletitle {
+	text-decoration: none;
+	text-transform: capitalize;
+	background: url(/media/images/img09.jpg) no-repeat left 3px;
+	font-size: 30px;
+	color: #64BC31;
+	padding-left: 40px;
+}
+
 .post .title a {
 	text-decoration: none;
 	text-transform: capitalize;
