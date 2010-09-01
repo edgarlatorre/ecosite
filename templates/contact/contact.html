@@ -8,17 +8,24 @@
 						<div class="post-bgbtm">
 							<br>
 							<center>
-								<h2> Contato </h2> 
+								<h2 class="singletitle"> Contato </h2> 
 							</center>
-							<form method='POST'>
+							{% if show %}
+								<h2 class="singletitle">{{ show }} </h2>
+							{% endif %}
+							<br>
+							{% include 'shared/error.html' %}
 							<table>
-								{{ form }}
-								<tr>
-									<th>&nbsp;</th>
-									<td><input type="submit" value="Enviar contato"/></td>
-								</tr>
-							</table>
+							<form action="/contato/" method="POST">
+								{% for field in form %}
+								    <div class="fieldWrapper">
+								        {{ field.label_tag }}:<br>
+								 		{{ field }}<br>
+								    </div>
+								{% endfor %}
+								<input type="submit" value="submit">
 							</form>
+							</table>
 						</div>
 					</div>
 				</div>

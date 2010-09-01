@@ -23,11 +23,10 @@ Released   : 20100403
 	<div id="header">
 		{% include "shared/menu.html" %}
 		<div id="search">
-			<form method="get" action="">
-				<fieldset>
-					<input type="text" name="s" id="search-text" size="15" />
-					<input type="submit" id="search-submit" value="GO" />
-				</fieldset>
+			<form method="GET" action="http://www.google.com/search">
+				<input type="hidden" name="sitesearch" value="www.ecofriend.edgarlatorre.net">
+				<input type="text" name="s" id="search-text" size="15" />
+				<input type="submit" id="search-submit" value="GO" />
 			</form>
 		</div>
 		<!-- end #search -->
