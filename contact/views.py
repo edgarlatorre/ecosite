@@ -22,12 +22,16 @@ class FormContact(forms.Form):
 		
 
 def contact(request):
+	error = False
 	if request.method == 'POST' :
 			form = FormContact(request.POST)
 			
 			if form.is_valid() :
 				form.send()
 				show = 'Mensagem enviada.'
+				form = FormContact()
+			else :
+				error = True	
 	else :
 		form = FormContact()
 				
