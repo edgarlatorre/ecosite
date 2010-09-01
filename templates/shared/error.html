@@ -1,0 +1,11 @@
+{% if error %}
+	<div class="displayerror">
+		{% for field in form %}
+			{% if field.errors %}
+				Erros no campo {{ field.label_tag }}:
+        		{{ field.errors|escape }}
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endif %}
+<br><br>
