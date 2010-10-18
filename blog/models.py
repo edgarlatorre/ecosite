@@ -10,6 +10,9 @@ class Category(models.Model):
 	def __unicode__(self):
 		return self.description
 		
+	class Meta:
+		verbose_name_plural = 'Categories'
+		
 class Link(models.Model):
 	url = models.CharField(max_length=60)
 	description = models.TextField(blank=True)
