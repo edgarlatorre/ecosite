@@ -1,45 +1,39 @@
-{% include "shared/header.html" %}
-<div id="page" onload="current('home');">
-	<div id="page-bgtop">
-		<div id="content">
-			{% load comments %}
-			<div class="post">
-				{% if post %}
-					<p class="meta"><span class="date">{{ post.published|date:"d/m/Y" }}</span> {{ post.published|date:"H:m:s" }} Escrito por <a href="#">{{ post.author }}</a></p>
-					<h2 class="singletitle">{{ post.title }} </h2>
-					<div class="entry">
-						{{ post.body|safe }}
-					</div>
-				{% else %}
-					<div class="entry">
-						Não existe post
-					</div>
-				{% endif %}
+{% extends "base.html" %}
+{% block content %}
+	{% load comments %}
+	<div class="post">
+		{% if post %}
+			<p class="meta"><span class="date">{{ post.published|date:"d/m/Y" }}</span> {{ post.published|date:"H:m:s" }} Escrito por <a href="#">{{ post.author }}</a></p>
+			<h2 class="singletitle">{{ post.title }} </h2>
+			<div class="entry">
+				{{ post.body|safe }}
 			</div>
-			{% get_comment_list for post as comments %}
-			{% if comments %}
-			<div class="post">
-				<div >
-					<center>
-						<h2>Comentários</h2>
-					</center>
-					
-					{% for comment in comments %}
-						<div class="comments">
-						{{ comment.name }} disse:
-						{{ comment.comment|linebreaks }}
-						{% if comment.url %}URL: {{ comment.url }}{% endif %}
-						</div>
-					{% endfor %}
-				</div>
+		{% else %}
+			<div class="entry">
+				Não existe post
 			</div>
-			{% endif %}
-			<div class="post">
-				<h3>Deixe um comentário</h3>
-				{% render_comment_form for post %}
-			</div>
-		</div>
-		<!-- end #content -->
-		{% include "shared/side_bar.html" %}
+		{% endif %}
 	</div>
-{% include "shared/footer.html" %}
+	{% get_comment_list for post as comments %}
+	{% if comments %}
+	<div class="post">
+		<div >
+			<center>
+				<h2>Comentários</h2>
+			</center>
+					
+			{% for comment in comments %}
+				<div class="comments">
+					{{ comment.name }} disse:
+					{{ comment.comment|linebreaks }}
+					{% if comment.url %}URL: {{ comment.url }}{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+	<div class="post">
+		<h3>Deixe um comentário</h3>
+		{% render_comment_form for post %}
+	</div>
+{% endblock %}

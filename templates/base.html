@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Assiduous  
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20100403
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Ecoando</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="{{ MEDIA_URL }}css/style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+	<div id="header-wrapper">
+		<div id="header">
+			{% include "shared/menu.html" %}
+			<div id="search">
+				<form method="GET" action="http://www.google.com/search">
+					<input type="hidden" name="sitesearch" value="www.ecofriend.edgarlatorre.net">
+					<input type="text" name="s" id="search-text" size="15" />
+					<input type="submit" id="search-submit" value="GO" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	<!-- end #header-wrapper -->
+	<div id="logo">
+		<h1><a href="/">Ecoando  </a></h1>
+		<p><em> Meio Ambiente </em></p>
+	</div>
+	<hr />
+	<!-- end #logo -->
+	<div id="page" onload="current('home');">
+		<div id="page-bgtop">
+			<div id="content">
+				{% block content %}{% endblock %}
+			</div>
+			<!-- end #content -->
+			{% include "shared/side_bar.html" %}
+		</div>
+		<div id="footer">
+			<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+		</div>
+		<!-- end #footer -->
+	</div>
+</body>
+</html>
